@@ -157,6 +157,49 @@ const updatePassword = catchAsyncErrors(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
+// Update User Profile
+const updateProfile = catchAsyncErrors(async (req, res, next) => {
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+  };
+
+  const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
+
+  res.status(200).json({
+    success: true,
+  });
+});
+
+// Get all Users fetch by admin
+const getAllUsers = catchAsyncErrors(async (req, res, next) => {
+  const users = await User.find();
+  res.status(200).json({
+    success: true,
+    users,
+  });
+});
+
+// Get Single Users fetch by admin
+const getSingleUser = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    return next(
+      new ErrorHandler(`User does not exists with ID: ${req.params.id}`)
+    );
+  }
+
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
+
 module.exports = {
   registerUser,
   loginUser,
@@ -165,4 +208,7 @@ module.exports = {
   resetPassword,
   getUserDetails,
   updatePassword,
+  updateProfile,
+  getAllUsers,
+  getSingleUser,
 };
