@@ -2,3 +2,15 @@
   margin: 0;
   scroll-behavior: smooth;
 }
+
+/* Chrome,Safari,Edge,Opera */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* FireFox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
