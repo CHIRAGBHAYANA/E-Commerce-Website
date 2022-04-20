@@ -5,7 +5,7 @@ import Product from "./Product.js";
 import MetaData from "../Layout/MetaData";
 import { getProduct } from "../../actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../Layout/Loader/Loader.";
+import Loader from "../Layout/Loader/Loader";
 import { useAlert } from "react-alert";
 
 // const product = {
@@ -28,7 +28,7 @@ const Home = () => {
       return alert.error(error);
     }
     dispatch(getProduct());
-  }, [dispatch]);
+  }, [dispatch, error]);
 
   return (
     <Fragment>
