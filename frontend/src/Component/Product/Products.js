@@ -8,11 +8,22 @@ import Pagination from "react-js-pagination";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 
+const categories = [
+  "gadgets",
+  "Footwear",
+  "Bottom",
+  "Tops",
+  "accessories",
+  "Camera",
+  "SmartPhones",
+];
+
 const Products = ({ match }) => {
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 25000]);
+  const [category, setCategory] = useState("");
 
   const {
     products,
@@ -34,9 +45,9 @@ const Products = ({ match }) => {
   };
 
   useEffect(() => {
-    dispatch(getProduct(keyword, currentPage, price));
+    dispatch(getProduct(keyword, currentPage, price, category));
     window.scrollTo(0, 0);
-  }, [dispatch, keyword, currentPage, price]);
+  }, [dispatch, keyword, currentPage, price, category]);
 
   let count = filteredProductsCount;
   return (
@@ -64,6 +75,19 @@ const Products = ({ match }) => {
               min={0}
               max={25000}
             ></Slider>
+
+            <Typography>Categories</Typography>
+            <ul className="categoryBox">
+              {categories.map((category) => (
+                <li
+                  className="category-link"
+                  key={category}
+                  onClick={() => setCategory(category)}
+                >
+                  {category}
+                </li>
+              ))}
+            </ul>
           </div>
 
           {resultPerPage < count && (
