@@ -26,6 +26,7 @@ const getAllProducts = catchAsyncErrors(async (req, res) => {
     success: true,
     product,
     productsCount,
+    resultPerPage,
   });
 });
 

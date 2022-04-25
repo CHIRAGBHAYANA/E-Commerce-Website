@@ -23,6 +23,7 @@ function ProductDetails({ match }) {
       dispatch(clearErrors());
     }
     dispatch(getProductDetails(match.params.id));
+    window.scrollTo(0, 0);
   }, [dispatch, match.params.id, error, alert]);
 
   const options = {
