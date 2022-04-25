@@ -7,6 +7,8 @@ import Footer from "./Component/Layout/Footer/Footer";
 import Home from "./Component/Home/Home";
 import Loader from "./Component/Layout/Loader/Loader";
 import ProductDetails from "./Component/Product/ProductDetails";
+import Products from "./Component/Product/Products.js";
+import Search from "./Component/Product/Search.js";
 function App() {
   React.useEffect(() => {
     WebFont.load({
@@ -20,6 +22,9 @@ function App() {
       <Header />
       <Route exact path="/" component={Home} />
       <Route exact path="/product/:id" component={ProductDetails} />
+      <Route exact path="/products" component={Products} />
+      <Route path="/products/:keyword" component={Products} />
+      <Route exact path="/search" component={Search} />
       <Footer />
     </Router>
   );
