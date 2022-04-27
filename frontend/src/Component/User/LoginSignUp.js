@@ -32,7 +32,7 @@ const LoginSignUp = ({ history }) => {
 
   const { name, email, password } = user;
 
-  const [avatar, setAvatar] = useState();
+  const [avatar, setAvatar] = useState("/Profile.png");
   const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
 
   const loginSubmit = (e) => {
@@ -53,7 +53,7 @@ const LoginSignUp = ({ history }) => {
   };
 
   const registerDataChange = (e) => {
-    if (e.target.value === "avatar") {
+    if (e.target.name === "avatar") {
       const reader = new FileReader();
 
       reader.onload = () => {
