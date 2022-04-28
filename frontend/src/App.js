@@ -17,6 +17,7 @@ import { useSelector } from "react-redux";
 import Profile from "./Component/User/Profile";
 import ProtectedRoute from "./Component/Route/ProtectedRoute";
 import UpdateProfile from "./Component/User/UpdateProfile";
+import UpdatePassword from "./Component/User/UpdatePassword";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -42,10 +43,13 @@ function App() {
 
       <ProtectedRoute exact path="/account" component={Profile} />
 
-      <Route exact path="/login" component={LoginSignUp} />
-
       <ProtectedRoute exact path="/me/update" component={UpdateProfile} />
-
+      <ProtectedRoute
+        exact
+        path="/password/update"
+        component={UpdatePassword}
+      />
+      <Route exact path="/login" component={LoginSignUp} />
       <Footer />
     </Router>
   );
