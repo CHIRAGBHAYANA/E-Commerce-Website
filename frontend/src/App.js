@@ -14,6 +14,7 @@ import { loadUser } from "./actions/userAction";
 import store from "./store";
 import UserOptions from "./Component/Layout/Header/UserOptions";
 import { useSelector } from "react-redux";
+import Profile from "./Component/User/Profile";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -24,6 +25,7 @@ function App() {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
+    store.dispatch(loadUser());
   }, []);
   return (
     <Router>
@@ -35,7 +37,11 @@ function App() {
       <Route exact path="/products" component={Products} />
       <Route path="/products/:keyword" component={Products} />
       <Route exact path="/search" component={Search} />
+
+      <Route exact path="/account" component={Profile} />
+
       <Route exact path="/login" component={LoginSignUp} />
+
       <Footer />
     </Router>
   );
