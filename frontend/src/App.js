@@ -15,6 +15,7 @@ import store from "./store";
 import UserOptions from "./Component/Layout/Header/UserOptions";
 import { useSelector } from "react-redux";
 import Profile from "./Component/User/Profile";
+import ProtectedRoute from "./Component/Route/ProtectedRoute";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -38,7 +39,7 @@ function App() {
       <Route path="/products/:keyword" component={Products} />
       <Route exact path="/search" component={Search} />
 
-      <Route exact path="/account" component={Profile} />
+      <ProtectedRoute exact path="/account" component={Profile} />
 
       <Route exact path="/login" component={LoginSignUp} />
 
