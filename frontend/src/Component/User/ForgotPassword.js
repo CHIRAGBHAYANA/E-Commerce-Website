@@ -5,14 +5,12 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, forgotPassword } from "../../actions/userAction";
 import { useAlert } from "react-alert";
-import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
 import MetaData from "../Layout/MetaData";
 
 const ForgotPassword = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
-  const { user } = useSelector((state) => state.user);
   const { error, message, loading } = useSelector(
     (state) => state.forgotPassword
   );

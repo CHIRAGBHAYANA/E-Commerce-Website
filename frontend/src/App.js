@@ -5,7 +5,7 @@ import WebFont from "webfontloader";
 import React from "react";
 import Footer from "./Component/Layout/Footer/Footer";
 import Home from "./Component/Home/Home";
-import Loader from "./Component/Layout/Loader/Loader";
+// import Loader from "./Component/Layout/Loader/Loader";
 import ProductDetails from "./Component/Product/ProductDetails";
 import Products from "./Component/Product/Products";
 import Search from "./Component/Product/Search";
