@@ -7,8 +7,8 @@ import Footer from "./Component/Layout/Footer/Footer";
 import Home from "./Component/Home/Home";
 import Loader from "./Component/Layout/Loader/Loader";
 import ProductDetails from "./Component/Product/ProductDetails";
-import Products from "./Component/Product/Products.js";
-import Search from "./Component/Product/Search.js";
+import Products from "./Component/Product/Products";
+import Search from "./Component/Product/Search";
 import LoginSignUp from "./Component/User/LoginSignUp";
 import { loadUser } from "./actions/userAction";
 import store from "./store";
@@ -18,6 +18,8 @@ import Profile from "./Component/User/Profile";
 import ProtectedRoute from "./Component/Route/ProtectedRoute";
 import UpdateProfile from "./Component/User/UpdateProfile";
 import UpdatePassword from "./Component/User/UpdatePassword";
+import ForgotPassword from "./Component/User/ForgotPassword";
+import ResetPassword from "./Component/User/ResetPassword";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -49,6 +51,10 @@ function App() {
         path="/password/update"
         component={UpdatePassword}
       />
+
+      <Route exact path="/password/forgot" component={ForgotPassword} />
+      <Route exact path="/password/reset/:token" component={ResetPassword} />
+
       <Route exact path="/login" component={LoginSignUp} />
       <Footer />
     </Router>
