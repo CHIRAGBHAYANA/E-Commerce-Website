@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import "./Cart.css";
 import CartItemCard from "./CartItemCard";
 import { useSelector, useDispatch } from "react-redux";
-import { addItemsToCart } from "../../actions/cartAction";
+import { addItemsToCart, removeItemFromCart } from "../../actions/cartAction";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -26,6 +26,10 @@ const Cart = () => {
     dispatch(addItemsToCart(id, newQty));
   };
 
+  const deleteCartItems = (id) => {
+    dispatch(removeItemFromCart(id));
+  };
+
   return (
     <Fragment>
       <div className="cartPage">
@@ -38,7 +42,7 @@ const Cart = () => {
         {cartItems &&
           cartItems.map((item) => (
             <div className="cartContainer">
-              <CartItemCard item={item} />
+              <CartItemCard item={item} deleteCartItems={deleteCartItems} />
               <div className="cartInput">
                 <button
                   onClick={() =>
