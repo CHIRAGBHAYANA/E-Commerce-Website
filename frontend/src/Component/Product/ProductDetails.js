@@ -17,8 +17,6 @@ function ProductDetails({ match }) {
     (state) => state.productDetails
   );
 
-  console.log(product);
-
   useEffect(() => {
     if (error) {
       alert.error(error);
