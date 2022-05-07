@@ -6,6 +6,7 @@ import { addItemsToCart, removeItemFromCart } from "../../actions/cartAction";
 import { Typography } from "@material-ui/core";
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 import { Link } from "react-router-dom";
+import MetaData from "../Layout/MetaData";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const Cart = () => {
     const newQty = quantity - 1;
 
     if (quantity < 2) {
+      dispatch(removeItemFromCart(id));
       return;
     }
     dispatch(addItemsToCart(id, newQty));
@@ -35,6 +37,7 @@ const Cart = () => {
 
   return (
     <Fragment>
+      <MetaData title="Cart" />
       {cartItems.length === 0 ? (
         <div className="emptyCart">
           <RemoveShoppingCartIcon />
@@ -91,7 +94,10 @@ const Cart = () => {
               <div></div>
               <div className="cartGrossTotalBox">
                 <p>Gross Total</p>
-                <p>{`6999`}</p>
+                <p>{`${cartItems.reduce(
+                  (acc, item) => acc + item.quantity * item.price,
+                  0
+                )}`}</p>
               </div>
               <div> </div>
               <div className="checkOutBtn">
