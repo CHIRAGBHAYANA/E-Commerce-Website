@@ -1,5 +1,5 @@
 import "./App.css";
-import Header from "./Component/Layout/Header/Header";
+// import Header from "./Component/Layout/Header/Header";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import WebFont from "webfontloader";
 import React from "react";
@@ -21,6 +21,7 @@ import UpdatePassword from "./Component/User/UpdatePassword";
 import ForgotPassword from "./Component/User/ForgotPassword";
 import ResetPassword from "./Component/User/ResetPassword";
 import Cart from "./Component/Cart/Cart";
+import Shipping from "./Component/Cart/Shipping";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -35,7 +36,7 @@ function App() {
   }, []);
   return (
     <Router>
-      <Header />
+      {/* <Header /> */}
 
       {isAuthenticated && <UserOptions user={user} />}
       <Route exact path="/" component={Home} />
@@ -58,6 +59,7 @@ function App() {
 
       <Route exact path="/login" component={LoginSignUp} />
       <Route exact path="/cart" component={Cart} />
+      <ProtectedRoute exact path="/shipping" component={Shipping} />
       <Footer />
     </Router>
   );
