@@ -2,7 +2,7 @@ import "./App.css";
 // import Header from "./Component/Layout/Header/Header";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import WebFont from "webfontloader";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "./Component/Layout/Footer/Footer";
 import Home from "./Component/Home/Home";
 // import Loader from "./Component/Layout/Loader/Loader";
@@ -23,17 +23,29 @@ import ResetPassword from "./Component/User/ResetPassword";
 import Cart from "./Component/Cart/Cart";
 import Shipping from "./Component/Cart/Shipping";
 import ConfirmOrder from "./Component/Cart/ConfirmOrder";
+import axios from "axios";
+import Payment from "./Component/Cart/Payment";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
-  React.useEffect(() => {
+  const [stripeApiKey, setStripeApiKey] = useState("");
+
+  async function getStripeApiKey() {
+    const { data } = await axios.get("/api/v1/stripeapikey");
+    setStripeApiKey(data.stripeApiKey);
+  }
+
+  useEffect(() => {
     WebFont.load({
       google: {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
     store.dispatch(loadUser());
+    getStripeApiKey();
   }, []);
   return (
     <Router>
@@ -62,6 +74,13 @@ function App() {
       <Route exact path="/cart" component={Cart} />
       <ProtectedRoute exact path="/shipping" component={Shipping} />
       <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder} />
+
+      {stripeApiKey && (
+        <Elements stripe={loadStripe(stripeApiKey)}>
+          <ProtectedRoute exact path="/process/payment" component={Payment} />
+        </Elements>
+      )}
+
       <Footer />
     </Router>
   );
