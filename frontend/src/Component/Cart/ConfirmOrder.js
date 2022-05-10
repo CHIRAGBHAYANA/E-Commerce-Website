@@ -6,7 +6,7 @@ import "./ConfirmOrder.css";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 
-const ConfirmOrder = () => {
+const ConfirmOrder = ({ history }) => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
 
@@ -22,6 +22,17 @@ const ConfirmOrder = () => {
   const totalPrice = subtotal + shippingCharges + tax;
 
   const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country} `;
+
+  const proccedToPayment = () => {
+    const data = {
+      subtotal,
+      shippingCharges,
+      tax,
+      totalPrice,
+    };
+    sessionStorage.setItem("orderInfo", JSON.stringify(data));
+    history.push("/process/payment");
+  };
 
   return (
     <Fragment>
@@ -91,7 +102,7 @@ const ConfirmOrder = () => {
               </p>
               <span>{totalPrice}</span>
             </div>
-            <button>Proceed To Payment</button>
+            <button onClick={proccedToPayment}>Proceed To Payment</button>
           </div>
         </div>
       </div>
