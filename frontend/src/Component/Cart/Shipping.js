@@ -13,7 +13,7 @@ import { useAlert } from "react-alert";
 import PinDropIcon from "@material-ui/icons/PinDrop";
 import CheckoutSteps from "./CheckoutSteps";
 
-const Shipping = () => {
+const Shipping = ({ history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const { shippingInfo } = useSelector((state) => state.cart);
@@ -25,8 +25,17 @@ const Shipping = () => {
   const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
   const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
 
-  const shippingSubmit = () => {
-    console.log();
+  const shippingSubmit = (e) => {
+    e.preventDefault();
+
+    if (phoneNo.length < 10 || phoneNo.length > 10) {
+      alert.error("Phone Number should be 10 digit Long");
+      return;
+    }
+    dispatch(
+      saveShippingInfo({ address, city, state, country, pinCode, phoneNo })
+    );
+    history.push("/order/confirm");
   };
 
   return (
@@ -127,7 +136,7 @@ const Shipping = () => {
               type="submit"
               value="Continue"
               className="shippingBtn"
-              disabled={state ? true : false}
+              disabled={state ? false : true}
             />
           </form>
         </div>
