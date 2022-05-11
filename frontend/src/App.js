@@ -28,6 +28,7 @@ import Payment from "./Component/Cart/Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./Component/Cart/OrderSuccess";
+import MyOrders from "./Component/Cart/MyOrders";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -83,6 +84,7 @@ function App() {
       )}
 
       <ProtectedRoute exact path="/success" component={OrderSuccess} />
+      <ProtectedRoute exact path="/orders" component={MyOrders} />
 
       <Footer />
     </Router>
