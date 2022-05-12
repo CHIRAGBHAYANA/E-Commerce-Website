@@ -2,12 +2,12 @@ import React, { Fragment, useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import "./MyOrders.css";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, myOrders } from "../../../actions/orderAction";
-import Loader from "../../Layout/Loader/Loader";
+import { clearErrors, myOrders } from "../../actions/orderAction";
+import Loader from "../Layout/Loader/Loader";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { Typography } from "@material-ui/core";
-import MetaData from "../../Layout/MetaData";
+import MetaData from "../Layout/MetaData";
 import LaunchIcon from "@material-ui/icons/Launch";
 
 const MyOrders = () => {
