@@ -97,7 +97,12 @@ function ProductDetails({ match }) {
                     <input readOnly value={quantity} type="number" />
                     <button onClick={increaseQuantity}> + </button>
                   </div>
-                  <button onClick={addCartHandler}>Add To cart</button>
+                  <button
+                    disabled={product.Stock < 1 ? true : false}
+                    onClick={addCartHandler}
+                  >
+                    Add To cart
+                  </button>
                 </div>
                 <p>
                   Status:

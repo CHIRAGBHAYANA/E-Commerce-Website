@@ -14,3 +14,10 @@ input::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+.greenColor {
+  color: green;
+}
+.redColor {
+  color: red;
+}

@@ -53,7 +53,7 @@ const MyOrders = () => {
       sortable: false,
       renderCell: (params) => {
         return (
-          <Link to={`/order/${(params.getValue(params.id), "id")}`}>
+          <Link to={`/order/${params.getValue(params.id, "id")}`}>
             <LaunchIcon />
           </Link>
         );
@@ -62,7 +62,6 @@ const MyOrders = () => {
   ];
 
   const rows = [];
-  console.log(orders);
   orders &&
     orders.forEach((item, index) => {
       rows.push({
