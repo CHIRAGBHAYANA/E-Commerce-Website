@@ -28,7 +28,7 @@ import Payment from "./Component/Cart/Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./Component/Cart/OrderSuccess";
-import MyOrders from "./Component/Cart/MyOrders";
+import MyOrders from "./Component/Cart/MyOrders/MyOrders";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
