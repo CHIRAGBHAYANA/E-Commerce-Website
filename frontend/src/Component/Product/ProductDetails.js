@@ -9,6 +9,13 @@ import Loader from "../Layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import MetaData from "../Layout/MetaData";
 import { addItemsToCart } from "../../actions/cartAction";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Button,
+} from "@material-ui/core";
 
 function ProductDetails({ match }) {
   const dispatch = useDispatch();
@@ -120,6 +127,9 @@ function ProductDetails({ match }) {
           </div>
 
           <h3 className="reviewHeading">REVIEWS</h3>
+
+          <Dialog aria-labelledby="simple-dialog"></Dialog>
+
           {product.reviews && product.reviews[0] ? (
             <div className="reviews">
               {product.reviews &&
