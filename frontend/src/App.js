@@ -1,5 +1,5 @@
 import "./App.css";
-import Header from "./Component/Layout/Header/Header";
+// import Header from "./Component/Layout/Header/Header";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WebFont from "webfontloader";
 import React, { useEffect, useState } from "react";
@@ -52,7 +52,7 @@ function App() {
   }, []);
   return (
     <Router>
-      <Header />
+      {/* <Header /> */}
 
       {isAuthenticated && <UserOptions user={user} />}
       <Route exact path="/" component={Home} />

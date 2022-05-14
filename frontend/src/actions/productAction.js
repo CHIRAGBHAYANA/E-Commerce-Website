@@ -65,7 +65,7 @@ export const newReview = (reviewData) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.get(`/api/v1/review`, reviewData, config);
+    const { data } = await axios.put(`/api/v1/review`, reviewData, config);
     dispatch({
       type: NEW_REVIEW_SUCCESS,
       payload: data.success,

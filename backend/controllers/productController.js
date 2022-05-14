@@ -104,7 +104,8 @@ const createProductReview = catchAsyncErrors(async (req, res, next) => {
 
   if (isReviewed) {
     product.reviews.forEach((rev) => {
-      (rev.rating = rating), (rev.comment = comment);
+      if (rev.user.toString() === req.user._id.toString())
+        (rev.rating = rating), (rev.comment = comment);
     });
   } else {
     product.reviews.push(review);
@@ -112,6 +113,7 @@ const createProductReview = catchAsyncErrors(async (req, res, next) => {
   }
 
   let avg = 0;
+
   product.reviews.forEach((rev) => {
     avg += rev.rating;
   });
