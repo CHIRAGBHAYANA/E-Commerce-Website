@@ -2,7 +2,11 @@ import React, { Fragment, useEffect } from "react";
 import "./ProductList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, getAdminProducts } from "../../../actions/productAction";
+import {
+  clearErrors,
+  getAdminProducts,
+  deleteProduct,
+} from "../../../actions/productAction";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
@@ -10,21 +14,41 @@ import MetaData from "../../Layout/MetaData";
 import Sidebar from "../SideBar/Sidebar";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { DELETE_PRODUCT_RESET } from "../../../constants/productConstants";
 
-const ProductList = () => {
+const ProductList = ({ history }) => {
   const dispatch = useDispatch();
 
   const alert = useAlert();
 
   const { products, error } = useSelector((state) => state.products);
+  const { error: deleteError, isDeleted } = useSelector(
+    (state) => state.product
+  );
 
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
+
+    if (deleteError) {
+      alert.error(deleteError);
+      dispatch(clearErrors());
+    }
+
+    if (isDeleted) {
+      alert.success("Product Delete Successfully");
+      history.push("/admin/dashboard");
+      dispatch({ type: DELETE_PRODUCT_RESET });
+    }
+
     dispatch(getAdminProducts());
-  }, [dispatch, alert, error]);
+  }, [dispatch, alert, error, history, deleteError, isDeleted]);
+
+  const deleteProductHandler = (id) => {
+    dispatch(deleteProduct(id));
+  };
 
   const columns = [
     { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
@@ -57,7 +81,11 @@ const ProductList = () => {
               <EditIcon />
             </Link>
             <Button>
-              <DeleteIcon />
+              <DeleteIcon
+                onClick={() =>
+                  deleteProductHandler(params.getValue(params.id, "id"))
+                }
+              />
             </Button>
           </Fragment>
         );
