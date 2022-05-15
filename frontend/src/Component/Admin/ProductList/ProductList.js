@@ -17,7 +17,6 @@ const ProductList = () => {
   const alert = useAlert();
 
   const { products, error } = useSelector((state) => state.products);
-  console.log(products);
 
   useEffect(() => {
     if (error) {

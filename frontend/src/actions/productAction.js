@@ -16,7 +16,6 @@ import {
   ADMIN_PRODUCT_SUCCESS,
   NEW_PRODUCT_REQUEST,
   NEW_PRODUCT_SUCCESS,
-  NEW_PRODUCT_RESET,
   NEW_PRODUCT_FAIL,
 } from "../constants/productConstants";
 
@@ -75,7 +74,7 @@ export const createProduct = (productData) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.put(
+    const { data } = await axios.post(
       `/api/v1/admin/product/new`,
       productData,
       config
