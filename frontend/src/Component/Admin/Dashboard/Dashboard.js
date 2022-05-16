@@ -9,8 +9,7 @@ import { getAdminProducts } from "../../../actions/productAction";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const { error, products } = useSelector((state) => state.products);
-  console.log(products);
+  const { products } = useSelector((state) => state.products);
   let outOfStock = 0;
 
   products &&
