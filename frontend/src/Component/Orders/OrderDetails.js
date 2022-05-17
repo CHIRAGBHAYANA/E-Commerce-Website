@@ -10,7 +10,6 @@ import { useAlert } from "react-alert";
 
 const OrderDetails = ({ match }) => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
-  console.log(order);
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -38,7 +37,7 @@ const OrderDetails = ({ match }) => {
               <div className="orderDetailsContainerBox">
                 <div>
                   <p>Name:</p>
-                  {/* <span>{order.user && order.user.name}</span> */}
+                  <span>{order.user && order.user.name}</span>
                 </div>
                 <div>
                   <p>Phone:</p>
