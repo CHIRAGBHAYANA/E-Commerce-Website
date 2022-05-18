@@ -35,7 +35,7 @@ import ProductList from "./Component/Admin/ProductList/ProductList";
 import NewProduct from "./Component/Admin/New Product/NewProduct";
 import UpdateProduct from "./Component/Admin/UpdateProduct/UpdateProduct";
 import OrderList from "./Component/Admin/Orders/OrderList";
-import UpdateOrder from "./Component/Admin/UpdateOrder/UpdateOrder";
+import ProcessOrder from "./Component/Admin/ProcessOrder/ProcessOrder";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -136,7 +136,7 @@ function App() {
         isAdmin={true}
         exact
         path="/admin/order/:id"
-        component={UpdateOrder}
+        component={ProcessOrder}
       ></ProtectedRoute>
 
       <Footer />

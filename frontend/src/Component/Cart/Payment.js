@@ -94,6 +94,7 @@ const Payment = ({ history }) => {
 
           dispatch(createOrder(order));
           history.push("/success");
+          localStorage.removeItem("cartItems");
         } else {
           alert.error("There's some issue while proccesing payment");
         }
