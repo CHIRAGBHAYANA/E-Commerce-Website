@@ -6,10 +6,16 @@ import "./Dashboard.css";
 import { Doughnut, Line } from "react-chartjs-2";
 import { useSelector, useDispatch } from "react-redux";
 import { getAdminProducts } from "../../../actions/productAction";
+import { getAllOrders } from "../../../actions/orderAction";
+import { getAllUsers } from "../../../actions/userAction";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
+  const { orders } = useSelector((state) => state.allOrders);
+  const { users } = useSelector((state) => state.allUsers);
+  console.log(orders);
+
   let outOfStock = 0;
 
   products &&
@@ -21,6 +27,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(getAdminProducts());
+    dispatch(getAllOrders());
+    dispatch(getAllUsers());
   }, [dispatch]);
 
   const lineState = {
@@ -65,11 +73,11 @@ const Dashboard = () => {
             </Link>
             <Link to="/admin/orders">
               <p>Orders</p>
-              <p>4</p>
+              <p>{orders && orders.length}</p>
             </Link>
             <Link to="/admin/users">
               <p>Users</p>
-              <p>4</p>
+              <p>{users && users.length}</p>
             </Link>
           </div>
         </div>

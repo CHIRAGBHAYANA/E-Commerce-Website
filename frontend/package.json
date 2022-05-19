@@ -18,7 +18,6 @@
     "country-state-city": "^3.0.1",
     "install": "^0.13.0",
     "npm": "^8.7.0",
-    "overlay-navbar": "^1.1.1",
     "react": "^18.0.0",
     "react-alert": "^7.0.3",
     "react-alert-template-basic": "^1.0.2",
