@@ -88,8 +88,7 @@ const Cart = ({ history }) => {
                     </button>
                   </div>
                   <p className="cartSubtotal">
-                    {" "}
-                    {`${item.price * item.quantity}`}
+                    ₹{`${item.price * item.quantity}`}
                   </p>
                 </div>
               ))}
@@ -98,10 +97,13 @@ const Cart = ({ history }) => {
               <div></div>
               <div className="cartGrossTotalBox">
                 <p>Gross Total</p>
-                <p>{`${cartItems.reduce(
-                  (acc, item) => acc + item.quantity * item.price,
-                  0
-                )}`}</p>
+                <p>
+                  ₹
+                  {`${cartItems.reduce(
+                    (acc, item) => acc + item.quantity * item.price,
+                    0
+                  )}`}
+                </p>
               </div>
               <div> </div>
               <div className="checkOutBtn">

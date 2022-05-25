@@ -107,7 +107,7 @@ const OrderList = ({ history }) => {
         id: item._id,
         status: item.orderStatus,
         itemsQty: item.orderItems.length,
-        amount: item.totalPrice,
+        amount: `₹${item.totalPrice}`,
       });
     });
 

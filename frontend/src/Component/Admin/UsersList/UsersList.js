@@ -68,7 +68,7 @@ const UsersList = ({ history }) => {
       minWidth: 150,
       flex: 0.3,
       cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "admin"
+        return params.getValue(params.id, "role") === "admin"
           ? "greenColor"
           : "redColor";
       },

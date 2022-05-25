@@ -79,12 +79,12 @@ const UpdateProduct = ({ history, match }) => {
   ]);
 
   const categories = [
-    "gadgets",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "accessories",
-    "Camera",
+    "Gadgets",
+    "Groceries",
+    "Electronics",
+    "Faishon",
+    "Toys",
+    "Home Decor",
     "SmartPhones",
   ];
 

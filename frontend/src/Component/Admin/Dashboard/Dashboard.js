@@ -25,6 +25,13 @@ const Dashboard = () => {
       }
     });
 
+  let totalAmount = 0;
+
+  orders &&
+    orders.forEach((item) => {
+      totalAmount += item.totalPrice;
+    });
+
   useEffect(() => {
     dispatch(getAdminProducts());
     dispatch(getAllOrders());
@@ -38,7 +45,7 @@ const Dashboard = () => {
         label: "TOTAL AMOUNT",
         backgroundColor: ["tomato"],
         hoverBackgroundColor: ["rgb(197,72,49)"],
-        data: [0, 4000],
+        data: [0, totalAmount],
       },
     ],
   };
@@ -62,7 +69,7 @@ const Dashboard = () => {
         <div className="dashboardSummary">
           <div>
             <p>
-              Total Amount <br /> 465768
+              Total Amount <br /> ₹ {totalAmount}
             </p>
           </div>
 

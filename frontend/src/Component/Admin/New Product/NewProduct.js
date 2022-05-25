@@ -15,12 +15,12 @@ import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 
 const NewProduct = ({ history }) => {
   const categories = [
-    "gadgets",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "accessories",
-    "Camera",
+    "Gadgets",
+    "Groceries",
+    "Electronics",
+    "Faishon",
+    "Toys",
+    "Home Decor",
     "SmartPhones",
   ];
 

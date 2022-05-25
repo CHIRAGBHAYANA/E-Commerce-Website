@@ -73,7 +73,7 @@ const OrderDetails = ({ match }) => {
 
                 <div>
                   <p>Amount:</p>
-                  <span>{order.totalPrice && order.totalPrice}</span>
+                  <span>₹{order.totalPrice && order.totalPrice}</span>
                 </div>
               </div>
 

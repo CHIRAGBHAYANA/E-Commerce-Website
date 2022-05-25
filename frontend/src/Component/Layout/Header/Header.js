@@ -3,6 +3,7 @@ import { ReactNavbar } from "overlay-navbar";
 import logo from "../../../Images/logo.png";
 
 const options = {
+  burgerColor: "orange",
   burgerColorHover: "#a62d24",
   logo,
   logoWidth: "20vmax",
