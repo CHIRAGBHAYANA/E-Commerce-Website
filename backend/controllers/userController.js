@@ -25,6 +25,14 @@ const registerUser = catchAsyncErrors(async (req, res, next) => {
     },
   });
 
+  const message = `Welcome to ECommerce Start Your Shopping on Our Portal without any Intervention and For Contact, Visit our Portal Contact Section`;
+
+  await sendEmail({
+    email: email,
+    subject: `Welcome to ECommerce`,
+    message,
+  });
+
   sendToken(user, 201, res);
 });
 
