@@ -14,6 +14,9 @@ const registerUser = catchAsyncErrors(async (req, res, next) => {
     crop: "scale",
   });
 
+  const message =
+    "Welcome TO ECommerce And Start Your Shopping with Utmost Joy.For any Contact you can visit our contact section of Our Site";
+
   const { name, email, password } = req.body;
   const user = await User.create({
     name,
@@ -25,6 +28,11 @@ const registerUser = catchAsyncErrors(async (req, res, next) => {
     },
   });
 
+  await sendEmail({
+    email: email,
+    subject: `Welcome to ECommerce`,
+    message,
+  });
   sendToken(user, 201, res);
 });
 
@@ -77,7 +85,9 @@ const forgotPassword = catchAsyncErrors(async (req, res, next) => {
   const resetToken = await user.getResetPasswordToken();
   await user.save({ validateBeforeSave: false });
 
-  const resetPasswordUrl = `https://ecommerce-website-applicatio.herokuapp.com/password/reset/${resetToken}`;
+  const resetPasswordUrl = `${req.protocol}://${req.get(
+    "host"
+  )}/password/reset/${resetToken}`;
 
   const message = `Your Password reset Token is :- \n\n ${resetPasswordUrl} \n\n if you have not requested this email then Please Ignore it.`;
 
