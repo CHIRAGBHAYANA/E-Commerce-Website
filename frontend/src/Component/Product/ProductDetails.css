@@ -28,7 +28,7 @@
 }
 .detailsBlock-1 > p {
   color: rgba(54, 54, 54, 0.582);
-  font: 200 0.6vmax cursive;
+  font: 200 0.6vmax Arial;
 }
 .detailsBlock-2 {
   display: flex;
@@ -40,7 +40,7 @@
   padding: 1vmax 0;
 }
 .detailsBlock-2-span {
-  font: 200 0.8vmax cursive;
+  font: 200 0.8vmax Arial;
   color: rgba(0, 0, 0, 0.699);
 }
 .detailsBlock-3 {
@@ -167,7 +167,7 @@
 }
 .reviewCardComment {
   color: rgba(0, 0, 0, 0.445);
-  font: 300 0.8vmax cursive;
+  font: 300 0.8vmax Arial;
 }
 .noReviews {
   font: 400 1.3vmax "Gill Sans";
@@ -244,6 +244,6 @@
     font: 600 3vw "Roboto";
   }
   .reviewCardComment {
-    font: 300 5vw cursive;
+    font: 300 5vw Arial;
   }
 }

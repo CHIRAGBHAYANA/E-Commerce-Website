@@ -14,9 +14,6 @@ const registerUser = catchAsyncErrors(async (req, res, next) => {
     crop: "scale",
   });
 
-  const message =
-    "Welcome TO ECommerce And Start Your Shopping with Utmost Joy.For any Contact you can visit our contact section of Our Site";
-
   const { name, email, password } = req.body;
   const user = await User.create({
     name,
@@ -28,11 +25,6 @@ const registerUser = catchAsyncErrors(async (req, res, next) => {
     },
   });
 
-  await sendEmail({
-    email: email,
-    subject: `Welcome to ECommerce`,
-    message,
-  });
   sendToken(user, 201, res);
 });
 

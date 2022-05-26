@@ -47,7 +47,7 @@
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.267);
   border-radius: 4px;
-  font: 300 0.9vmax cursive;
+  font: 300 0.9vmax Arial;
   outline: none;
 }
 .shippingForm > div > svg {
@@ -87,7 +87,7 @@
   .shippingForm > div > input,
   .shippingForm > div > select {
     padding: 5vw 10vw;
-    font: 300 4vw cursive;
+    font: 300 4vw Arial;
   }
   .shippingForm > div > svg {
     font-size: 6vw;

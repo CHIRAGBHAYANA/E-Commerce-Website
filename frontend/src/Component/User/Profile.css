@@ -100,7 +100,7 @@
     font: 400 2.5vmax "Roboto";
   }
   .profileContainer > div:last-child > div > p {
-    font: 400 2vmax cursive;
+    font: 400 2vmax Arial;
     margin: 0.5vmax 0;
   }
   .profileContainer > div:last-child > div:last-child > a {
